@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { FilterContext } from '../../context/FilterContext'
 
 const ImageFilters = () => {
@@ -45,10 +45,6 @@ const ImageFilters = () => {
         e.target.classList.remove("border-white")
         setActiveFilters({...activeFilters,[sect]: e.target.id})
     }
-
-    useEffect(()=>{
-        console.log(filters);
-    },[filters])
   return (
     <div className='w-[28vw] mr-[30px] mt-[13px] min-h-[200px] h-max py-[10px] fixed top-[60px] right-0 rounded bg-emerald-400'>
         <section className='w-[95%] max-h-[150px] h-max mx-auto'>
