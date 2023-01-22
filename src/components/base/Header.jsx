@@ -13,7 +13,7 @@ const Header = ({currentLocation}) => {
             <h1 className='text-[34px] py-0 mt-[-10px] font-[500] select-none'>Imagerr</h1>
         </section>
         {
-            !user ? (
+            user ? (
                 <section className='mr-[30px] text-[40px] text-zinc-900 cursor-pointer' onClick={e=>setIsMenuOpen(!isMenuOpen)}>
                    {!isMenuOpen ? (<BiMenu />) : (<CgClose />)} 
                 </section>
