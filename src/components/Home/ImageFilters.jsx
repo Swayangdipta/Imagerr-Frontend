@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { FilterContext } from '../../context/FilterContext'
 
 const ImageFilters = () => {
     const [activeFilters,setActiveFilters] = useState({
         sort: 'oldest',
         category: 'all',
-        view: 'compact'
+        view: 'cozy'
     })
+
+    const [filters,setFilters] = useContext(FilterContext)
 
     const handleClick = e => sect => {
         handleUIChange(e,sect)
+
+        setFilters({...filters,[sect]: e.target.id})
     }
 
     const handleUIChange = (e,sect) => {
@@ -40,6 +45,10 @@ const ImageFilters = () => {
         e.target.classList.remove("border-white")
         setActiveFilters({...activeFilters,[sect]: e.target.id})
     }
+
+    useEffect(()=>{
+        console.log(filters);
+    },[filters])
   return (
     <div className='w-[28vw] mr-[30px] mt-[13px] min-h-[200px] h-max py-[10px] fixed top-[60px] right-0 rounded bg-emerald-400'>
         <section className='w-[95%] max-h-[150px] h-max mx-auto'>
@@ -52,7 +61,7 @@ const ImageFilters = () => {
         <section className='w-[95%] max-h-[150px] h-max mx-auto mt-[10px]'>
             <h2 className='text-[20px] font-[600]'>Category</h2>
             <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
-                <button id="all" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white'>All</button>
+                <button id="all" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-blue-900 bg-blue-900 text-white'>All</button>
                 <button id="nature" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white'>Nature</button>
                 <button id="landscapes" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white'>Landscapes</button>                             
                 <button id="abstract" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white'>Abstract</button>                             
@@ -62,7 +71,7 @@ const ImageFilters = () => {
             <h2 className='text-[20px] font-[600]'>View</h2>
             <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
                 <button id="compact" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white'>Compact</button>
-                <button id="cozy" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white'>Cozy</button>                             
+                <button id="cozy" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-blue-900 bg-blue-900 text-white'>Cozy</button>                             
             </div>
         </section>
     </div>
