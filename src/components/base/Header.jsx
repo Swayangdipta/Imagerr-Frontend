@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { isAuthenticated } from '../../utils/LS_Helper'
 import Menu from './Menu'
 import {BiMenu} from 'react-icons/bi'
+import {CgClose} from 'react-icons/cg'
 
 const Header = ({currentLocation}) => {
     const [isMenuOpen,setIsMenuOpen] = useState(false)
@@ -9,12 +10,12 @@ const Header = ({currentLocation}) => {
   return (
     <div className='w-[100vw] h-[60px] flex items-center justify-between bg-emerald-400 shadow-md fixed top-0'>
         <section className='ml-[30px] py-0 my-0'>
-            <h1 className='text-[34px] py-0 mt-[-10px] font-[500]'>Imagerr</h1>
+            <h1 className='text-[34px] py-0 mt-[-10px] font-[500] select-none'>Imagerr</h1>
         </section>
         {
             !user ? (
                 <section className='mr-[30px] text-[40px] text-zinc-900 cursor-pointer' onClick={e=>setIsMenuOpen(!isMenuOpen)}>
-                    <BiMenu />
+                   {!isMenuOpen ? (<BiMenu />) : (<CgClose />)} 
                 </section>
             ) : (
                 <section className='mr-[30px] flex gap-[20px]'>
