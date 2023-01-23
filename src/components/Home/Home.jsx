@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../base/Header'
+import ImageContainer from '../Image/ImageContainer'
 import ImageFilters from './ImageFilters'
 import ImageSearch from './ImageSearch'
 
@@ -9,6 +10,7 @@ const Home = () => {
         <Header currentLocation="home" />
         <ImageSearch />
         <ImageFilters />
+        <ImageContainer />
     </div>
   )
 }
