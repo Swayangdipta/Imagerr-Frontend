@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div>
         <Header currentLocation="home" />
-        <ImageSearch />
+        {/* <ImageSearch /> */}
         <ImageFilters />
         <ImageContainer />
     </div>
