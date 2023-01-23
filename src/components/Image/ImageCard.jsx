@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import {FilterContext} from '../../context/FilterContext'
 
 const ImageCard = ({img,author}) => {
+  const [filters,setFilters] = useContext(FilterContext)
   return (
-    <div className='h-[200px] rounded bg-emerald-200 relative top-0'>
+    <div className={`${filters.view === "compact" ? ('h-[150px]') 
+        : filters.view === "small" ? ('h-[100px]') 
+        : filters.view === "large" ? ('h-[300px]') : ''} h-[200px] rounded bg-emerald-200 relative top-0`}>
         <h6 className='absolute top-[10px] left-[10px] rounded bg-white px-[10px]'>JPG</h6> {/* Image Format Here */}
         <img src={img} alt="" className='h-[100%] rounded cursor-pointer' />
 

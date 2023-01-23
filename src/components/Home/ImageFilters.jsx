@@ -67,7 +67,9 @@ const ImageFilters = () => {
             <h2 className='text-[20px] font-[600]'>View</h2>
             <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
                 <button id="compact" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white'>Compact</button>
-                <button id="cozy" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-blue-900 bg-blue-900 text-white'>Cozy</button>                             
+                <button id="cozy" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-blue-900 bg-blue-900 text-white'>Normal</button>                             
+                <button id="small" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white'>Small</button>                             
+                <button id="large" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white'>Large</button>                             
             </div>
         </section>
     </div>
