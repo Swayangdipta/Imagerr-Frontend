@@ -5,7 +5,7 @@ import ImageCard from './ImageCard'
 
 const ImageContainer = () => {
   return (
-    <div className='w-[64vw] fixed left-0 top-[130px] h-[calc(100vh_-_130px)] overflow-y-scroll flex flex-wrap items-start justify-evenly gap-y-[10px] ml-[30px] pb-[30px]'>
+    <div className='w-[calc(70vw_-_40px)] fixed left-0 top-[80px] h-[calc(100vh_-_80px)] overflow-y-scroll flex flex-wrap items-start gap-[10px] gap-x-auto gap-y-[10px] ml-[30px] pb-[30px]'>
         <ImageCard img={img1} />
         <ImageCard img={img2} />
         <ImageCard img={img1} />

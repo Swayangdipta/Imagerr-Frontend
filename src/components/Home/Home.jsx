@@ -8,7 +8,6 @@ const Home = () => {
   return (
     <div>
         <Header currentLocation="home" />
-        {/* <ImageSearch /> */}
         <ImageFilters />
         <ImageContainer />
     </div>
