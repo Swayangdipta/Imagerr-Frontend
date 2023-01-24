@@ -8,8 +8,10 @@ const Home = () => {
   return (
     <div>
         <Header currentLocation="home" />
-        <ImageFilters />
-        <ImageContainer />
+        <div className='flex mx-auto w-[calc(100%_-_60px)] relative top-[80px] gap-[10px]'>
+          <ImageContainer />
+          <ImageFilters />          
+        </div>
     </div>
   )
 }

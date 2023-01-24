@@ -46,7 +46,7 @@ const ImageFilters = () => {
         setActiveFilters({...activeFilters,[sect]: e.target.id})
     }
   return (
-    <div className='w-[28vw] mr-[30px] mt-[13px] min-h-[200px] h-max py-[10px] fixed top-[60px] right-0 rounded bg-yellow-300'>
+    <div className='w-[25%] min-h-[200px] h-max py-[10px] rounded bg-yellow-300'>
         <section className='w-[95%] max-h-[150px] h-max mx-auto'>
             <h2 className='text-[20px] font-[600]'>Sort By</h2>
             <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
