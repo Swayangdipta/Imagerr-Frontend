@@ -23,7 +23,7 @@ const Header = ({currentLocation}) => {
                 </section>
             ) : (
                 <section className='mr-[30px] flex gap-[20px]'>
-                    <button className='px-[20px] py-[5px] text-white text-[18px] border-2 border-white text-zinc-800 font-[600] rounded bg-white shadow-lg hover:shadow-none'>Sign in</button>
+                    <button className='px-[20px] py-[5px] text-[18px] border-2 border-white text-zinc-800 font-[600] rounded bg-white shadow-lg hover:shadow-none'>Sign in</button>
                 </section>
             )
         }
