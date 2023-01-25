@@ -9,13 +9,14 @@ function App() {
   return (
     <BrowserRouter>
     <ToastContainer />
-    <FilterProvider>
     <ImageProvider>
+    <FilterProvider>
       <Routes>
         <Route path='/' element={<Home />} />
-      </Routes>      
+      </Routes> 
+    </FilterProvider>     
     </ImageProvider>
-    </FilterProvider>
+    
     </BrowserRouter>
   );
 }

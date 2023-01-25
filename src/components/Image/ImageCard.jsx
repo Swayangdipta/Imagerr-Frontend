@@ -7,7 +7,7 @@ const ImageCard = ({img,author}) => {
   return (
     <div className={`${filters.view === "compact" ? ('h-[150px]') 
         : filters.view === "small" ? ('h-[100px]') 
-        : filters.view === "large" ? ('h-[300px]') : ''} flex-auto  h-[200px] rounded bg-emerald-200 relative top-0`}>
+        : filters.view === "large" ? ('h-[300px]') : 'h-[200px]'} flex-auto  rounded bg-emerald-200 relative top-0`}>
         <h6 className='absolute select-none top-[10px] left-[10px] rounded bg-white px-[10px]'>JPG</h6> {/* Image Format Here */}
         <img src={img} alt="" className='h-[100%] w-full object-cover rounded cursor-pointer' />
 
