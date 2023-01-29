@@ -46,7 +46,7 @@ const ImageFilters = () => {
         setActiveFilters({...activeFilters,[sect]: e.target.id})
     }
   return (
-    <div className='w-[25%] min-h-[200px] h-max py-[10px] rounded bg-yellow-300'>
+    <div className='w-[25%] z-0 min-h-[200px] h-max py-[10px] rounded bg-zinc-200 border-zinc-400 border-[1px]'>
         <section className='w-[95%] max-h-[150px] h-max mx-auto'>
             <h2 className='text-[20px] font-[600]'>Sort By</h2>
             <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
@@ -72,6 +72,7 @@ const ImageFilters = () => {
                 <button id="large" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Large</button>                             
             </div>
         </section>
+
     </div>
   )
 }
