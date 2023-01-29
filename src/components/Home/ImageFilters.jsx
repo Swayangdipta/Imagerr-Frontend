@@ -5,7 +5,8 @@ const ImageFilters = () => {
     const [activeFilters,setActiveFilters] = useState({
         sort: 'oldest',
         category: 'all',
-        view: 'cozy'
+        view: 'cozy',
+        theme: "light"
     })
 
     const [filters,setFilters] = useContext(FilterContext)
@@ -29,6 +30,12 @@ const ImageFilters = () => {
             document.getElementById(activeFilters.view).classList.remove("text-white")
             document.getElementById(activeFilters.view).classList.add("bg-white")
             document.getElementById(activeFilters.view).classList.add("border-white")  
+        }else if(sect === "theme"){
+            document.getElementById(activeFilters.theme).classList.remove("bg-blue-900")
+            document.getElementById(activeFilters.theme).classList.remove("border-blue-900")
+            document.getElementById(activeFilters.theme).classList.remove("text-white")
+            document.getElementById(activeFilters.theme).classList.add("bg-white")
+            document.getElementById(activeFilters.theme).classList.add("border-white")   
         }else{
             document.getElementById(activeFilters.category).classList.remove("bg-blue-900")
             document.getElementById(activeFilters.category).classList.remove("border-blue-900")
@@ -72,7 +79,13 @@ const ImageFilters = () => {
                 <button id="large" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Large</button>                             
             </div>
         </section>
-
+        <section className='w-[95%] max-h-[150px] h-max mx-auto mt-[10px]'>
+            <h2 className='text-[20px] font-[600]'>Theme</h2>
+            <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
+                <button id="light" onClick={e=>handleClick(e)("theme")} className='px-[10px] text-[18px] rounded border-2 border-blue-900 bg-blue-900 text-white hover:shadow-lg'>Light</button>
+                <button id="dark" onClick={e=>handleClick(e)("theme")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Dark</button>                                                        
+            </div>
+        </section>
     </div>
   )
 }

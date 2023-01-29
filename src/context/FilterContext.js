@@ -6,7 +6,8 @@ export const FilterProvider = (props) => {
     const [filters, setFilters] = useState({
         sort: '',
         category: 'all',
-        view: 'cozy'
+        view: 'cozy',
+        theme: 'light'
     })
 
     return(
