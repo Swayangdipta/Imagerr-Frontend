@@ -15,7 +15,7 @@ const ImageSearch = () => {
             </select>
 
             <form className='w-[80%] h-[40px]'>
-                <input className='outline-none dark:bg-zinc-200 border-zinc-200 border-[1px] border-l-0 w-[100%] h-[40px] text-zinc-800 font-[500] rounded-r indent-2' type="text" name="search" placeholder='Search images. Ex. Nature ...' onChange={handleSearch} />
+                <input className='outline-none dark:bg-zinc-200 border-zinc-400 border-[1px] border-l-0 w-[100%] h-[40px] text-zinc-800 font-[500] rounded-r indent-2' type="text" name="search" placeholder='Search images. Ex. Nature ...' onChange={handleSearch} />
             </form>
         </div>
     </div>
