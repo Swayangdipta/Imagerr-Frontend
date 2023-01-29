@@ -53,16 +53,16 @@ const ImageFilters = () => {
         setActiveFilters({...activeFilters,[sect]: e.target.id})
     }
   return (
-    <div className='w-[25%] z-0 min-h-[200px] h-max py-[10px] rounded bg-zinc-200 border-zinc-400 border-[1px]'>
+    <div className='w-[25%] z-0 min-h-[200px] h-max py-[10px] rounded dark:bg-zinc-900 dark:border-0 bg-zinc-200 border-zinc-400 border-[1px]'>
         <section className='w-[95%] max-h-[150px] h-max mx-auto'>
-            <h2 className='text-[20px] font-[600]'>Sort By</h2>
+            <h2 className='text-[20px] font-[600] dark:text-zinc-100'>Sort By</h2>
             <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
                 <button onClick={e=>handleClick(e)("sort")} id="oldest" className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Oldest</button>
                 <button onClick={e=>handleClick(e)("sort")} id="newest" className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Newest</button>                             
             </div>
         </section>
         <section className='w-[95%] max-h-[150px] h-max mx-auto mt-[10px]'>
-            <h2 className='text-[20px] font-[600]'>Category</h2>
+            <h2 className='text-[20px] font-[600] dark:text-zinc-100'>Category</h2>
             <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
                 <button id="all" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-blue-900 bg-blue-900 text-white hover:shadow-lg'>All</button>
                 <button id="nature" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Nature</button>
@@ -71,7 +71,7 @@ const ImageFilters = () => {
             </div>
         </section>
         <section className='w-[95%] max-h-[150px] h-max mx-auto mt-[10px]'>
-            <h2 className='text-[20px] font-[600]'>View</h2>
+            <h2 className='text-[20px] font-[600] dark:text-zinc-100'>View</h2>
             <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
                 <button id="compact" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Compact</button>
                 <button id="cozy" onClick={e=>handleClick(e)("view")} className='px-[10px] text-[18px] rounded border-2 border-blue-900 bg-blue-900 text-white hover:shadow-lg'>Normal</button>                             
@@ -80,7 +80,7 @@ const ImageFilters = () => {
             </div>
         </section>
         <section className='w-[95%] max-h-[150px] h-max mx-auto mt-[10px]'>
-            <h2 className='text-[20px] font-[600]'>Theme</h2>
+            <h2 className='text-[20px] font-[600] dark:text-zinc-100'>Theme</h2>
             <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
                 <button id="light" onClick={e=>handleClick(e)("theme")} className='px-[10px] text-[18px] rounded border-2 border-blue-900 bg-blue-900 text-white hover:shadow-lg'>Light</button>
                 <button id="dark" onClick={e=>handleClick(e)("theme")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Dark</button>                                                        

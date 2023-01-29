@@ -9,3 +9,16 @@ a{
     margin: 0;
     padding: 0;
 }
+
+*::-webkit-scrollbar-thumb{
+    background: #10b981;
+    border-radius: 50px;
+}
+
+*::-webkit-scrollbar{
+    width: 10px;
+
+}
+
+*::-webkit-scrollbar-track{
+}

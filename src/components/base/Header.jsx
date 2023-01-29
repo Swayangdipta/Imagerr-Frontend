@@ -9,16 +9,16 @@ const Header = ({currentLocation}) => {
     const [isMenuOpen,setIsMenuOpen] = useState(false)
     const {user} = isAuthenticated()
   return (
-    <div className='w-[100vw] h-[70px] z-50 flex items-center justify-between bg-zinc-100 border-b border-zinc-400 fixed top-0'>
+    <div className='w-[100vw] h-[70px] z-50 flex items-center justify-between dark:bg-zinc-900 bg-zinc-100 border-b dark:border-b-0 border-zinc-400 fixed top-0'>
         <section className='ml-[30px] py-0 my-0'>
-            <h1 className='text-[34px] text-zinc-900 py-0 mt-[-10px] font-[500] select-none'>Imagerr</h1>
+            <h1 className='text-[34px] dark:text-zinc-100 text-zinc-900 py-0 mt-[-10px] font-[500] select-none'>Imagerr</h1>
         </section>
         <section>
             <ImageSearch />
         </section>
         {
             user ? (
-                <section className='mr-[30px] text-[40px] text-zinc-900 cursor-pointer' onClick={e=>setIsMenuOpen(!isMenuOpen)}>
+                <section className='mr-[30px] text-[40px] dark:text-zinc-100 text-zinc-900 cursor-pointer' onClick={e=>setIsMenuOpen(!isMenuOpen)}>
                    {!isMenuOpen ? (<BiMenu />) : (<CgClose />)} 
                 </section>
             ) : (

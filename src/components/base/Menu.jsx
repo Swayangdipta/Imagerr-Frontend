@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const Menu = ({currentLocation}) => {
   return (
-    <div className='fixed z-50 flex flex-col items-center gap-[10px] top-[75px] right-[30px] border-zinc-400 border-[1px] w-[300px] h-max py-[10px] bg-zinc-200 rounded'>
+    <div className='fixed z-50 flex flex-col items-center gap-[10px] top-[75px] right-[30px] border-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 border-[1px] w-[300px] h-max py-[10px] bg-zinc-200 rounded'>
         {
           currentLocation === "home" ? (
             <>
