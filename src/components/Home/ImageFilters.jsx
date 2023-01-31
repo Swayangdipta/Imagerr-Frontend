@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { FilterContext } from '../../context/FilterContext'
 
 const ImageFilters = () => {
@@ -52,6 +52,21 @@ const ImageFilters = () => {
         e.target.classList.remove("border-white")
         setActiveFilters({...activeFilters,[sect]: e.target.id})
     }
+
+    useEffect(()=>{
+
+        handleUIChange({target: document.getElementById(filters.theme)},"theme")
+        handleUIChange({target: document.getElementById(filters.view)},"view")
+        handleUIChange({target: document.getElementById(filters.category)},"category")
+        if(filters.sort !== ""){
+            handleUIChange({target: document.getElementById(filters.sort)},"sort")            
+        }
+        setActiveFilters({
+            ...activeFilters,
+            view: filters.view,
+            theme: filters.theme
+        })
+    },[])
   return (
     <div className='w-[25%] z-0 min-h-[200px] h-max py-[10px] rounded dark:bg-zinc-900 dark:border-0 bg-zinc-200 border-zinc-400 border-[1px]'>
         <section className='w-[95%] max-h-[150px] h-max mx-auto'>
