@@ -20,7 +20,7 @@ const ImageInfo = ({data}) => {
         <span key={index} className='px-[10px] overflow-hidden h-[30px] rounded-md bg-amber-300 dark:bg-amber-700'>{tag}</span>
       ))}</h1>
       <Link to={`/collections/${data.author._id}`}>
-        <h1 className='ml-[20px] pt-[10px] text-[20px] dark:text-zinc-300 text-zinc-800 select-none flex items-center gap-[10px] mt-[5px]'><FaUserCircle /> <span className='underline'>{data.author}</span></h1>
+        <h1 className='ml-[20px] pt-[10px] text-[20px] dark:text-zinc-300 text-zinc-800 select-none flex items-center gap-[10px] mt-[5px]'><FaUserCircle /> <span className='underline'>{data.author} <span className='text-[14px]'>(view all)</span></span></h1>
       </Link>
 
         {
