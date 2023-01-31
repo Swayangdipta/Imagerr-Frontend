@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { MdAddPhotoAlternate } from 'react-icons/md'
 import Header from '../base/Header'
 import ImageContainer from '../Image/ImageContainer'
 import ImageFilters from './ImageFilters'
-import ImageSearch from './ImageSearch'
+import UploadForm from './UploadForm'
 
 const Home = () => {
+  const [isFormOpen,setIsFormOpen] = useState(false)
   return (
     <div>
         <Header currentLocation="home" />
@@ -12,6 +14,15 @@ const Home = () => {
           <ImageContainer />
           <ImageFilters />          
         </div>
+        <div onClick={e=>setIsFormOpen(true)} className='w-[60px] h-[60px] text-zinc-100 text-[38px] cursor-pointer hover:shadow-none bg-emerald-600 shadow-lg fixed bottom-[20px] right-[30px] rounded flex items-center justify-center'>
+          <MdAddPhotoAlternate />
+        </div>
+        {
+          isFormOpen && (
+            <UploadForm setIsFormOpen={setIsFormOpen} />
+          )
+        }
+        
     </div>
   )
 }
