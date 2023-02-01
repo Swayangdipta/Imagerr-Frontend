@@ -31,7 +31,6 @@ const SignInForm = () => {
         setHelpers({...helpers,validationError: '',isLoading: true,isDisabled: true})
 
         signIn(inputs).then(response => {
-            console.log(response)
             if(response?.response?.data?.error){
                 setHelpers({...helpers,validationError: '',isLoading: false,isDisabled: false})
                 return toast.error(response?.response?.data?.error,{theme: 'colored'})
@@ -46,27 +45,6 @@ const SignInForm = () => {
         }).catch(err => {
             console.log(err);
         })
-    }
-
-    const validate = () => {
-        if(password.length < 8){
-            setHelpers({...helpers,validationError: "Password must be 8 characters"})
-            return false
-        }else if(!/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)){
-            setHelpers({...helpers,validationError: "Password must have a special character"})
-            return false
-        }else if(!/\d/.test(password)){
-            setHelpers({...helpers,validationError: "Password must have a number"})
-            return false
-        }else if(!/[A-Z]/.test(password)){
-            setHelpers({...helpers,validationError: "Password must have a uppercase letter"})
-            return false
-        }else if(!/[a-z]/.test(password)){
-            setHelpers({...helpers,validationError: "Password must have a lowercase letter"})
-            return false
-        }else{
-            return true
-        }
     }
 
     useEffect(()=>{
@@ -84,7 +62,7 @@ const SignInForm = () => {
             user && token && (<Navigate to="/" />)
         }
         <div className='w-[400px] min-h-[200px] max-h-max px-[10px] pt-[10px] pb-[20px] rounded bg-zinc-100 border-[1px] dark:border-0 border-zinc-400 dark:bg-zinc-900'>
-            <h1 className='text-[30px] dark:text-zinc-100 font-[500]'>Join us</h1>
+            <h1 className='text-[30px] dark:text-zinc-100 font-[500]'>Welcome Back</h1>
             <hr className='border-0 h-[1px] bg-zinc-400 mt-[5px]' />
 
             <form className='w-[100%] flex flex-col h-max'>
