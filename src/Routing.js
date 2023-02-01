@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import {ToastContainer} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
+import AuthPage from './components/auth/AuthPage';
 import Home from './components/Home/Home';
 import ExtendedImage from './components/Image/ExtendedImage';
 import { FilterContext } from './context/FilterContext';
@@ -22,6 +23,7 @@ const Routing = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/asset/:id' element={<ExtendedImage />} />
+        <Route path='/login/:type' element={<AuthPage />} />
       </Routes> 
     </BrowserRouter>
   )
