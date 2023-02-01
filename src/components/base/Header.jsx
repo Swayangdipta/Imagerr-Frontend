@@ -17,9 +17,14 @@ const Header = ({currentLocation}) => {
 
         {
             user ? (
+                <>
+                <section>
+                    <ImageSearch />
+                </section> 
                 <section className='mr-[30px] text-[40px] dark:text-zinc-100 text-zinc-900 cursor-pointer' onClick={e=>setIsMenuOpen(!isMenuOpen)}>
                    {!isMenuOpen ? (<BiMenu />) : (<CgClose />)} 
                 </section>
+                </>
             ) : currentLocation === "login" ? (
                 <section className='mr-[30px] flex gap-[20px]'>
                     <Link to={`/login/up`}><button className='px-[20px] py-[5px] text-[18px] text-white font-[600] rounded bg-emerald-500 shadow-lg hover:shadow-none'>Sign up</button></ Link>
