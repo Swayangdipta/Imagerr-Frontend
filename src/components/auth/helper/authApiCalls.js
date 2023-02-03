@@ -12,6 +12,10 @@ export const signIn = (data) => {
     }).then(response => response).catch(e=>e)
 }
 
+export const signUp = data => {
+    return axios.post(`${backend}/auth/signup`,data).then(response => response).catch(e=>e)
+}
+
 export const signOut = () => {
     return axios.get(`${backend}/auth/signout`).then(response => {
        return removeAuthorization()

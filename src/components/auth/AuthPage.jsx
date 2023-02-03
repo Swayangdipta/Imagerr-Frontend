@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import Header from '../base/Header'
 import SignInForm from './SignInForm'
+import SignUpForm from './SignUpForm'
 
 const AuthPage = () => {
     const {type} = useParams()
@@ -13,7 +14,10 @@ const AuthPage = () => {
                 <SignInForm />            
             </>
         ) : (
-           <Header currentLocation="register" /> 
+          <>
+            <Header currentLocation="register" /> 
+            <SignUpForm />
+           </>
         )}
         
     </div>
