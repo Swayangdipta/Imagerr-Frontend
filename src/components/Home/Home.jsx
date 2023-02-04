@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MdAddPhotoAlternate } from 'react-icons/md'
 import Header from '../base/Header'
 import ImageContainer from '../Image/ImageContainer'
