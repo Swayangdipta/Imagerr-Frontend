@@ -3,6 +3,8 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import {ToastContainer} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
 import AuthPage from './components/auth/AuthPage';
+import ForgotPassword from './components/auth/ForgotPassword';
+import ResetPassword from './components/auth/ResetPassword';
 import Home from './components/Home/Home';
 import ExtendedImage from './components/Image/ExtendedImage';
 import { FilterContext } from './context/FilterContext';
@@ -24,6 +26,8 @@ const Routing = () => {
         <Route path='/' element={<Home />} />
         <Route path='/asset/:id' element={<ExtendedImage />} />
         <Route path='/login/:type' element={<AuthPage />} />
+        <Route path='/forgot' element={<ForgotPassword />} />
+        <Route path='/password/reset/:resetToken' element={<ResetPassword />} />
       </Routes> 
     </BrowserRouter>
   )

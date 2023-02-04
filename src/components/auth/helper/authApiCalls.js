@@ -21,3 +21,14 @@ export const signOut = () => {
        return removeAuthorization()
     }).catch(e=>e)
 }
+
+export const requestForgotPasswordLink = email => {
+    return axios.post(`${backend}/auth/password/forgot`,email).then(response => response).catch(e=>e)
+}
+
+export const resetPassword = (data,resetToken) => {
+    return axios.put(`${backend}/auth/password/reset/${resetToken}`,data)
+                .then(response=>{
+                    return response
+                }).catch(e=>e)
+}
