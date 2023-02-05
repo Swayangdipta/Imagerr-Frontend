@@ -25,6 +25,20 @@ const Routing = () => {
   },[filters.theme])
 
   useEffect(()=>{
+      if(filters.sort === 'oldest'){
+        let sorted = images.sort((a,b)=>{
+          return new Date(a.createdAt)  - new Date(b.createdAt)
+        })
+        setImages(sorted)
+      }else{
+        let sorted = images.sort((a,b)=>{
+          return new Date(b.createdAt)  - new Date(a.createdAt)
+        })
+        setImages(sorted)
+      }
+  },[filters.sort])
+
+  useEffect(()=>{
     getImages(100).then(data=>{
       if(data?.response?.data?.error){
         return toast.error(data?.response?.data?.error,{theme: 'colored'})

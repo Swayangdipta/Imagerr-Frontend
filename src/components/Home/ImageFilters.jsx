@@ -75,6 +75,7 @@ const ImageFilters = () => {
                 <button onClick={e=>handleClick(e)("sort")} id="oldest" className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Oldest</button>
                 <button onClick={e=>handleClick(e)("sort")} id="newest" className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Newest</button>                             
             </div>
+            <p>*Double Click</p>
         </section>
         <section className='w-[95%] max-h-[150px] h-max mx-auto mt-[10px]'>
             <h2 className='text-[20px] font-[600] dark:text-zinc-100'>Category</h2>
