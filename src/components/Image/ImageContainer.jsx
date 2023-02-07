@@ -1,6 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import img1 from './1.jpg'
-import img2 from './2.jpg'
 import ImageCard from './ImageCard'
 import {ImageContext} from '../../context/ImageContext'
 

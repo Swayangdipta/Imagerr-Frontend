@@ -6,7 +6,6 @@ import {thumbnail} from "@cloudinary/url-gen/actions/resize"
 import Header from '../base/Header'
 import FullviewImage from './FullviewImage'
 import ImageInfo from './ImageInfo'
-import img1 from './1.jpg'
 import { getASingleImage } from './helper/imageApiCalls'
 import { toast } from 'react-toastify'
 import { BiLoaderAlt } from 'react-icons/bi'
