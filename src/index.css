@@ -17,4 +17,5 @@ a{
 
 *::-webkit-scrollbar{
     width: 10px;
+    background: #fff837;
 }
