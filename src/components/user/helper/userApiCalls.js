@@ -10,6 +10,15 @@ export const addAssetToUserCollection = (userId,token,imageId) => {
     }).then(response => response).catch(e=>e)
 }
 
+export const removeAssetFromCollection = (imageId,userId,token) => {
+    return axios.delete(`${backend}/user/collection/${userId}`,{
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
+        data: {_id: imageId}
+    }).then(response => response).catch(e=>e)
+}
+
 export const getUser = (id ,token)=> {
     return axios.get(`${backend}/user/${id}`,{
         headers: {
