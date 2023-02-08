@@ -31,12 +31,12 @@ const Menu = ({currentLocation,setIsMenuOpen=f=>f}) => {
             </>
           ) : currentLocation === "profile" ? (
             <>
-              <Link to="/home" className='w-[90%]'><button className='w-[100%] h-[35px] border-0 rounded bg-emerald-600 shadow-sm text-white text-[18px]'>Home</button></Link>
+              <Link to="/" className='w-[90%]'><button className='w-[100%] h-[35px] border-0 rounded bg-emerald-600 shadow-sm text-white text-[18px]'>Home</button></Link>
               <Link to="/collections" className='w-[90%]'><button className='w-[100%] h-[35px] border-0 rounded bg-emerald-600 shadow-sm text-white text-[18px]'>Collections</button></Link>           
             </>
           ) : currentLocation === "collection" ? (
             <>
-              <Link to="/home" className='w-[90%]'><button className='w-[100%] h-[35px] border-0 rounded bg-emerald-600 shadow-sm text-white text-[18px]'>Home</button></Link>
+              <Link to="/" className='w-[90%]'><button className='w-[100%] h-[35px] border-0 rounded bg-emerald-600 shadow-sm text-white text-[18px]'>Home</button></Link>
               <Link to="/profile" className='w-[90%]'><button className='w-[100%] h-[35px] border-0 rounded bg-emerald-600 shadow-sm text-white text-[18px]'>Profile</button></Link>           
             </>
           ) : ""

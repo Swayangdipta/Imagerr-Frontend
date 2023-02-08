@@ -32,9 +32,11 @@ const CollectionPage = () => {
         <div className='w-[calc(100vw_-_60px)] flex flex-wrap gap-[10px] h-max pt-[20px] pb-[30px] relative top-[150px] mx-auto'>
             {
                 userDetails && userDetails.collections.length > 0 
-                    && userDetails.collections.map((elem,index)=>(
+                    ? userDetails.collections.map((elem,index)=>(
                         <ImageCard image={elem} key={index} />
-                    ))
+                    )) : (
+                        <h1 className='text-[30px] text-zinc-600 dark:text-zinc-600'>Loading...</h1>
+                    )
             }
         </div>
     </div>
