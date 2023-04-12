@@ -9,6 +9,7 @@ import Home from './components/Home/Home';
 import ExtendedImage from './components/Image/ExtendedImage';
 import { getImages } from './components/Image/helper/imageApiCalls';
 import CollectionPage from './components/user/CollectionPage';
+import Profile from './components/user/Profile';
 import { FilterContext } from './context/FilterContext';
 import { ImageContext } from './context/ImageContext';
 const Routing = () => {
@@ -60,6 +61,7 @@ const Routing = () => {
         <Route path='/forgot' element={<ForgotPassword />} />
         <Route path='/password/reset/:resetToken' element={<ResetPassword />} />
         <Route path='/collections' element={<CollectionPage />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes> 
     </BrowserRouter>
   )
