@@ -97,7 +97,7 @@ const ImageFilters = () => {
                 <button id="all" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-blue-900 bg-blue-900 text-white hover:shadow-lg'>All</button>
                 {
                     categories.length > 0 && categories.map((category,index)=> (
-                        <button key={index} id={category.name} onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>{category.name}</button>
+                        <button key={index} id={category._id} onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>{category.name}</button>
                     ))
                 }                           
             </div>

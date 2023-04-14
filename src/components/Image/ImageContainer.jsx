@@ -4,14 +4,30 @@ import {ImageContext} from '../../context/ImageContext'
 import { SearchResultContext } from '../../context/SearchResultContext'
 import { FilterContext } from '../../context/FilterContext'
 import { CategorizedImageContext } from '../../context/CategorizedImageContext'
+import { getImagesByCategory } from './helper/imageApiCalls'
+import { toast } from 'react-toastify'
 
 const ImageContainer = () => {
   const [images,setImages] = useContext(ImageContext)
   const [filters,setFilters] = useContext(FilterContext)
   const [searchedImages,setSearchedImages] = useContext(SearchResultContext)
-  const [categorizedImages,SetCategorizedImages] = useContext(CategorizedImageContext)
+  const [categorizedImages,setCategorizedImages] = useContext(CategorizedImageContext)
   useEffect(()=>{
-    console.log(filters.category);
+    if(filters.category !== "all"){
+      getImagesByCategory(filters.category,40).then(response => {
+        console.log(response);
+        if(response.name === "AxiosError"){
+          return toast.error("Faild to get images.Try again!")
+        }else if(response?.response?.data?.error){
+          return toast.error(response?.response?.data?.error)
+        }else{
+          setCategorizedImages(response.data.assets)
+        }
+      }).catch(e=>{
+        console.log(e);
+        return toast.error("Something went wrong.Try again!")
+      })
+    }
   },[filters.category])
   return (
     <div className='w-[100%] h-[calc(100vh_-_90px)] overflow-x-hidden overflow-y-scroll flex flex-wrap items-start gap-[10px] gap-x-auto gap-y-[10px] pb-[30px]'>

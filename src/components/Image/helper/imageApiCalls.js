@@ -24,10 +24,8 @@ export const uploadImage = (data,userId,token) => {
     }).then(response=>response).catch(e=>e)
 }
 
-export const getImagesByCategory = categoryId => {
-    return axios.post(`${backend}/image/search/category`,{
-        _id: categoryId
-    }).then(response=>response).catch(e=>e)
+export const getImagesByCategory = (categoryId,limit) => {
+    return axios.get(`${backend}/category/${categoryId}?limit=${limit}`).then(response=>response).catch(e=>e)
 }
 
 export const getCategories = () => {
