@@ -6,6 +6,12 @@ export const getImages = limit => {
     return axios.get(`${backend}/images?limit=${limit}`).then(response=>response).catch(e=>e)
 }
 
+export const searchImages = query => {
+    return axios.post(`${backend}/image/search`,{
+        query: query
+    }).then(response=>response).catch(e=>e)
+}
+
 export const getASingleImage = id => {
     return axios.get(`${backend}/image/${id}`).then(response=>response).catch(e=>e)
 }
@@ -16,4 +22,14 @@ export const uploadImage = (data,userId,token) => {
             "Authorization": `Bearer ${token}`
         }
     }).then(response=>response).catch(e=>e)
+}
+
+export const getImagesByCategory = categoryId => {
+    return axios.post(`${backend}/image/search/category`,{
+        _id: categoryId
+    }).then(response=>response).catch(e=>e)
+}
+
+export const getCategories = () => {
+    return axios.get(`${backend}/category`).then(response=>response).catch(e=>e)
 }

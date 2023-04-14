@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FilterContext } from '../../context/FilterContext'
+import { getCategories } from '../Image/helper/imageApiCalls'
+import {toast} from "react-toastify"
 
 const ImageFilters = () => {
     const [activeFilters,setActiveFilters] = useState({
@@ -10,6 +12,7 @@ const ImageFilters = () => {
     })
 
     const [filters,setFilters] = useContext(FilterContext)
+    const [categories,setCategories] = useState([])
 
     const handleClick = e => sect => {
         handleUIChange(e,sect)
@@ -66,7 +69,18 @@ const ImageFilters = () => {
             view: filters.view,
             theme: filters.theme
         })
+        getCategories().then(response => {
+            console.log(response);
+            if(response.name === "AxiosError"){
+                return toast.error("Faild to get categories.")
+            }else if(response?.response?.data?.error){
+                return toast.error(response?.response?.data?.error)
+            }else{
+                setCategories(response.data)
+            }
+        })
     },[])
+    
   return (
     <div className='w-[25%] z-0 min-h-[200px] h-max py-[10px] rounded dark:bg-zinc-900 dark:border-0 bg-zinc-200 border-zinc-400 border-[1px]'>
         <section className='w-[95%] max-h-[150px] h-max mx-auto'>
@@ -81,9 +95,11 @@ const ImageFilters = () => {
             <h2 className='text-[20px] font-[600] dark:text-zinc-100'>Category</h2>
             <div className='flex gap-[10px] my-[5px] w-[100%] flex-wrap'>
                 <button id="all" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-blue-900 bg-blue-900 text-white hover:shadow-lg'>All</button>
-                <button id="nature" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Nature</button>
-                <button id="landscapes" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Landscapes</button>                             
-                <button id="abstract" onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>Abstract</button>                             
+                {
+                    categories.length > 0 && categories.map((category,index)=> (
+                        <button key={index} id={category.name} onClick={e=>handleClick(e)("category")} className='px-[10px] text-[18px] rounded border-2 border-white bg-white hover:shadow-lg'>{category.name}</button>
+                    ))
+                }                           
             </div>
         </section>
         <section className='w-[95%] max-h-[150px] h-max mx-auto mt-[10px]'>
