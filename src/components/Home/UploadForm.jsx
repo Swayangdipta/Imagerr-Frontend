@@ -5,7 +5,7 @@ import { ImImage, ImPriceTag, ImPriceTags } from 'react-icons/im'
 import { AiFillTags, AiOutlineUpload } from 'react-icons/ai'
 import {isAuthenticated} from '../../utils/LS_Helper'
 import { toast } from 'react-toastify'
-import { uploadImage } from '../Image/helper/imageApiCalls'
+import { getCategories, uploadImage } from '../Image/helper/imageApiCalls'
 
 const UploadForm = ({setIsFormOpen = f => f}) => {
   const [inputs,setInputs] = useState({
@@ -22,6 +22,7 @@ const UploadForm = ({setIsFormOpen = f => f}) => {
 
   const {title,price,tags,category,isFree,imagePreviewUrl,formData,isLoading} = inputs
   const [isDisabled,setIsDisabled] = useState(true)
+  const [categories,setCategories] = useState([])
 
   const {user,token} = isAuthenticated()
 
@@ -85,6 +86,20 @@ const UploadForm = ({setIsFormOpen = f => f}) => {
       setIsDisabled(false)
     }
   },[inputs])
+
+  useEffect(()=>{
+    getCategories().then(response => {
+      if(response?.response?.data?.error){
+        return toast.error(response?.response?.data?.error)
+      }else if(response.name === "AxiosError"){
+        return toast.error("Categories did not load.Reopen the form!")
+      }else{
+        setCategories(response.data)
+      }
+    }).catch(e=>{
+      return toast.error("Categories did not load.Reopen the form!")
+    })
+  },[])
   
   return (
     <div className='w-screen h-screen fixed flex items-center justify-center top-0 left-0 z-[100] bg-[#00000078]'>
@@ -117,9 +132,12 @@ const UploadForm = ({setIsFormOpen = f => f}) => {
             <label htmlFor="category" className='w-[90%] mx-auto mt-[5px] text-[20px] text-zinc-800 dark:text-zinc-300'>Category</label>
             <span className='relative top-0 mx-auto w-[90%]'>
               <select value={category} onChange={e=>handleChange("category")(e)} name="category" id="category" className='w-[100%] h-[30px] indent-[35px] outline-0 mx-auto mt-[5px] border-[1px] border-zinc-400 rounded'>
-                <option value="Nature">Nature</option>
-                <option value="Landscapes">Landscapes</option>
-                <option value="Abstract">Abstract</option>
+                <option value="Nature">Select</option>
+                {
+                  categories.length > 0 && categories.map((elem,index)=>(
+                    <option key={index} value={elem._id}>{elem.name}</option>
+                  ))
+                }
               </select>
               <MdCategory className='absolute top-[10px] left-[5px] text-[23px]' />
             </span>
