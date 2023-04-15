@@ -2,12 +2,18 @@ import React, { useState } from 'react'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import ImageCard from '../Image/ImageCard'
 
-const UserUploads = ({data}) => {
+const UserUploads = ({data,type="def"}) => {
     const [isExpanded,setIsExpanded] = useState(true)
   return (
-    <div className='w-screen mt-[50px]'>
+    <div className='w-screen mb-[10px] overflow-x-hidden'>
         <div className='select-none w-[90%] h-[50px] text-[24px] font-[500] mx-auto flex items-center justify-between rounded-t-md dark:bg-zinc-900 bg-zinc-100 border dark:border-0 border-zinc-400 text-zinc-900 dark:text-zinc-100'>
-            <h1 className='ml-[30px]'>My Uploads</h1>
+            {
+                type === "def" ?  (
+                    <h1 className='ml-[30px]'>My Uploads</h1>
+                ) : type === "purchases" ? (
+                    <h1 className='ml-[30px]'>Purchases</h1>
+                ) : ''
+            }
             {
                 isExpanded ? (<MdKeyboardArrowUp onClick={e=>setIsExpanded(false)} className='cursor-pointer text-[40px] mr-[20px]' />) : (<MdKeyboardArrowDown onClick={e=>setIsExpanded(true)} className='cursor-pointer text-[40px] mr-[20px]' />)
             }
@@ -16,7 +22,11 @@ const UserUploads = ({data}) => {
             {
                 data.length > 0 ? data.map((element,index)=>(
                     <ImageCard image={element} key={index} />
-                )) : (<h1 className='text-center text-zinc-600 dark:text-700 ml-[30px]'>Upload some asset to view</h1>)
+                )) : data.length === 0 && type === "def" ? (
+                    <h1 className='text-center text-zinc-600 dark:text-700 ml-[30px]'>Upload some asset to view</h1>
+                ) : data.length === 0 && type === "purchases" && (
+                    <h1 className='text-center text-zinc-600 dark:text-700 ml-[30px]'>No purchases found</h1>
+                )
             }
         </div>
     </div>

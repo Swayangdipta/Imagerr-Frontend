@@ -32,6 +32,7 @@ const Profile = () => {
         {
             user.role === 2 && user.accountType === "Creator" && userInfo && (<UserUploads data={userInfo.uploads} />)
         }
+        <UserUploads data={userInfo.purchases} type="purchases" />
     </div>
   )
 }

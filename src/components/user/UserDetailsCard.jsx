@@ -9,7 +9,7 @@ const UserDetailsCard = () => {
     const [isFormOpen,setIsFormOpen] = useState(false)
     const {user,token} = isAuthenticated()
     return (
-        <div className="w-screen h-[250px] mt-[70px] py-[20px] flex justify-center">
+        <div className="w-screen h-[250px] mt-[70px] mb-[50px] py-[20px] flex justify-center">
             <div className="w-[90%] h-[250px] flex items-center gap-[30px] rounded-md dark:bg-zinc-900 bg-zinc-100 border dark:border-0 border-zinc-400 relative top-0">
                 <div onClick={e=> setIsFormOpen(true)} className="absolute top-[15px] right-[15px] w-[35px] h-[35px] rounded bg-sky-500 cursor-pointer flex items-center justify-center text-zinc-800 shadow-xl hover:shadow-none hover:bg-sky-400"><ImPencil /></div>
                 <img src={`${process.env.REACT_APP_BACKEND}/user/image/${user._id}`} className="h-[220px] w-[220px] rounded-full object-cover ml-[20px] border dark:border-0 border-zinc-400" alt="User DP" />
