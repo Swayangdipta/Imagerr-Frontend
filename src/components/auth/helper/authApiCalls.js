@@ -32,3 +32,11 @@ export const resetPassword = (data,resetToken) => {
                     return response
                 }).catch(e=>e)
 }
+
+export const updateUser = (data,userId,token) => {
+    return axios.put(`${backend}/user/${userId}`,data,{
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }).then(response => response).catch(e=>e)
+}
