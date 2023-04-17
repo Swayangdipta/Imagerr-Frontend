@@ -1,18 +1,46 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import {IoMdPricetag} from 'react-icons/io'
 import {RxDimensions} from 'react-icons/rx'
-import {BiCategory} from 'react-icons/bi'
+import {BiCategory,BiLoaderAlt} from 'react-icons/bi'
 import {MdMemory} from 'react-icons/md'
 import {AiOutlineFileJpg,AiOutlineTags} from 'react-icons/ai'
 import {FaUserCircle,FaDownload} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import {saveAs} from "file-saver";
+import {saveAs} from "file-saver"
+import { placeOrder } from '../user/helper/userApiCalls'
+import { isAuthenticated } from '../../utils/LS_Helper'
+import {toast} from 'react-toastify'
+import {v4} from 'uuid'
 
 
 const ImageInfo = ({data}) => {
+  const [isDownloading,setIsDownloading] = useState(false)
+  const {user,token} = isAuthenticated()
   const handleDownloadFree = event => {
-    let url = `https://res.cloudinary.com/swayangdipta/image/upload/v1/${data.images.id}`
-    saveAs(url,`A photograph by ${data.author.name}.${data.images.format}`)
+    setIsDownloading(true)
+    let order = {
+      transaction_id: v4(),
+      images: [data._id],
+      total_amount: data.price,
+      payment_method: data.isFree ? "FREE" : "PAID",
+      payment_status: data.price === 0 ? "COMPLETED" : "INCOMPLETED",
+      payment_details: {}
+    }
+
+    placeOrder(user._id,token,order).then(dataa=>{
+      if(dataa?.response?.data?.error){
+        setIsDownloading(false)
+        return toast.error(dataa?.response?.data?.error)
+      }else if(dataa.name === "AxiosError"){
+        setIsDownloading(false)
+        return toast.error("Something went wrong.Try again!")
+      }
+
+      let url = `https://res.cloudinary.com/swayangdipta/image/upload/v1/${data.images.id}`
+      saveAs(url,`A photograph by ${data.author.name}.${data.images.format}`)
+      setIsDownloading(false)
+      return toast.success("Order placed successfully.")
+    })
   }
   return (
     <div className={`${data.images.width > data.images.height ? ('w-[100%]') : ('w-[100%]')} relative top-0  h-[100%] z-10 bg-zinc-300 dark:bg-zinc-900 rounded-r-md`}>
@@ -31,7 +59,9 @@ const ImageInfo = ({data}) => {
 
         {
           data.isFree ? (
-            <button onClick={handleDownloadFree} className='absolute bottom-[20px] mx-[20px] h-[40px] rounded-md shadow-md w-[calc(100%_-_40px)] bg-emerald-500 text-[22px] text-white font-[500] flex items-center justify-center gap-[10px]'>Download <FaDownload /> </button>              
+            <button onClick={handleDownloadFree} className='absolute bottom-[20px] mx-[20px] h-[40px] rounded-md shadow-md w-[calc(100%_-_40px)] bg-emerald-500 text-[22px] text-white font-[500] flex items-center justify-center gap-[10px]'>{
+              isDownloading ? (<>Downloading... <BiLoaderAlt className='animate-spin' /></>) : (<>Download <FaDownload /></>)
+            }</button>              
           ) : (
             <button className='absolute bottom-[20px] mx-[20px] h-[40px] rounded-md shadow-md w-[calc(100%_-_40px)] bg-emerald-500 text-[22px] text-white font-[500] flex items-center justify-center gap-[10px]'>Buy Now <FaDownload /> </button>              
           )

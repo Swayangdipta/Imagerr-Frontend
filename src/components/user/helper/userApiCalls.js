@@ -26,3 +26,19 @@ export const getUser = (id ,token)=> {
         }
     }).then(response => response).catch(e=>e)
 }
+
+export const placeOrder = (userId,token,order) => {
+    return axios.post(`${backend}/order/${userId}`,order,{
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    }).then(response => response).catch(e=>e)
+}
+
+export const getSingleOrder = (userId,token,orderId) => {
+    return axios.post(`${backend}/orders/${userId}/${orderId}`,{},{
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    }).then(response => response).catch(e=>e)
+}
