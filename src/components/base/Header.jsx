@@ -5,6 +5,7 @@ import {BiMenu} from 'react-icons/bi'
 import {CgClose} from 'react-icons/cg'
 import ImageSearch from '../Home/ImageSearch'
 import { Link } from 'react-router-dom'
+import ToggleTheme from './ToggleTheme'
 
 const Header = ({currentLocation}) => {
     const [isMenuOpen,setIsMenuOpen] = useState(false)
@@ -14,13 +15,22 @@ const Header = ({currentLocation}) => {
         <section className='ml-[30px] py-0 my-0'>
             <h1 className='text-[34px] dark:text-zinc-100 text-zinc-900 py-0 mt-[-10px] font-[500] select-none'>Imagerr</h1>
         </section>
+        {
+            currentLocation !== "home" && (
+                <ToggleTheme />
+            )
+        }
 
         {
             user ? (
                 <>
-                <section>
-                    <ImageSearch />
-                </section> 
+                {
+                    currentLocation === "home" && (
+                    <section>
+                        <ImageSearch />
+                    </section> 
+                    )
+                }
                 <section className='mr-[30px] text-[40px] dark:text-zinc-100 text-zinc-900 cursor-pointer' onClick={e=>setIsMenuOpen(!isMenuOpen)}>
                    {!isMenuOpen ? (<BiMenu />) : (<CgClose />)} 
                 </section>
