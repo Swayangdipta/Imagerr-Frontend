@@ -80,7 +80,7 @@ const ExtendedImage = () => {
     }
   return (
     <div>
-      <Header currentLocation={"home"} />
+      <Header currentLocation={"collection"} />
       <div className='w-screen h-screen fixed top-0 left-0 blur-2xl z-0'>
         <AdvancedImage className="w-full h-full object-cover" cldImg={cldImage} plugins={[lazyload({rootMargin: '10px 20px 10px 30px', threshold: 0.25})]} />
       </div>
