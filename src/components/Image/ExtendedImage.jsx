@@ -9,14 +9,16 @@ import ImageInfo from './ImageInfo'
 import { getASingleImage } from './helper/imageApiCalls'
 import { toast } from 'react-toastify'
 import { BiLoaderAlt } from 'react-icons/bi'
-import { FaCartPlus } from 'react-icons/fa'
-import { addAssetToUserCollection } from '../user/helper/userApiCalls'
+import { FaCartPlus, FaCheck } from 'react-icons/fa'
+import { addAssetToUserCollection, getUser } from '../user/helper/userApiCalls'
 import { isAuthenticated } from '../../utils/LS_Helper'
 
 const ExtendedImage = () => {
     const [image,setImage] = useState({})
     const [cldImage,setCldImage] = useState('')
     const [isLoading,setIsloading] = useState(false)
+    const [notInCart,setNotInCart] = useState(true)
+    const [userDetails,setUserDetails] = useState(undefined)
     const {id} = useParams()
 
     const {user,token} = isAuthenticated()
@@ -33,7 +35,33 @@ const ExtendedImage = () => {
       }).catch(err=>{
         return toast.error("Something went wrong!",{theme: 'colored'})
       })
+
+      if(user){
+        getUser(user._id,token).then(data=>{
+            if(data?.response?.data?.error){
+                toast.error(data?.response?.data?.error,{theme: 'colored'})
+                return false
+            }else if(data.name === "AxiosError"){
+                toast.error("Something went wrong!",{theme: 'colored'})
+                return false      
+            }
+
+            setUserDetails(data.data.collections)
+        })          
+    }
     },[])
+
+    useEffect(()=>{
+      if(userDetails){
+        for (let index = 0; index < userDetails.length; index++) {
+          const element = userDetails[index];
+          if(element._id === image._id){
+            setNotInCart(false)
+            break
+          }
+        }
+      }
+    },[userDetails])
 
     const cld = new Cloudinary({
       cloud: {
@@ -86,7 +114,7 @@ const ExtendedImage = () => {
       </div>
       <div className='w-[calc(100vw_-_60px)] z-10 h-[calc(100vh_-_90px)] mt-[80px] flex justify-between mx-[30px] relative top-0'>
         {
-          image.images && user && (
+          image.images && user && notInCart && (
             <div onClick={handleAddToCollection} className='absolute top-0 left-0 w-[70px] h-[70px] flex items-center justify-center bg-emerald-500 rounded-tl-md rounded-br-md hover:shadow-xl cursor-pointer z-[100]'>
               {
                 isLoading ? (
