@@ -18,7 +18,7 @@ const Order = () => {
             }else if(data.name === "AxiosError"){
                 return toast.error("Faild to load order information.Try again!")
             }
-            console.log(data.data)
+
             setOrderInfo(data.data)
         })
     },[])
