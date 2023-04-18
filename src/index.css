@@ -10,6 +10,10 @@ a{
     padding: 0;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 *::-webkit-scrollbar-thumb{
     background: #10b981;
     border-radius: 50px;

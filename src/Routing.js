@@ -12,6 +12,7 @@ import CollectionPage from './components/user/CollectionPage';
 import Profile from './components/user/Profile';
 import { FilterContext } from './context/FilterContext';
 import { ImageContext } from './context/ImageContext';
+import Order from './components/user/Order';
 const Routing = () => {
   const [filters,setFilters] = useContext(FilterContext)
   const [images,setImages] = useContext(ImageContext)
@@ -62,6 +63,7 @@ const Routing = () => {
         <Route path='/password/reset/:resetToken' element={<ResetPassword />} />
         <Route path='/collections' element={<CollectionPage />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/order/:orderId' element={<Order />} />
       </Routes> 
     </BrowserRouter>
   )
