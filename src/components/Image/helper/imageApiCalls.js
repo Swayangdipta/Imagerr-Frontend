@@ -31,3 +31,7 @@ export const getImagesByCategory = (categoryId,limit) => {
 export const getCategories = () => {
     return axios.get(`${backend}/category`).then(response=>response).catch(e=>e)
 }
+
+export const getImagesByCreator = id => {
+    return axios.get(`${backend}/creator/${id}`).then(response=>response).catch(e=>e)
+}
