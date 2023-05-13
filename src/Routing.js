@@ -15,6 +15,7 @@ import { ImageContext } from './context/ImageContext';
 import Order from './components/user/Order';
 import ImagesByCreator from './components/Image/ImagesByCreator';
 import Dashboard from './components/admin/Dashboard';
+import ManageData from './components/admin/ManageData';
 const Routing = () => {
   const [filters,setFilters] = useContext(FilterContext)
   const [images,setImages] = useContext(ImageContext)
@@ -66,6 +67,7 @@ const Routing = () => {
         <Route path='/collections' element={<CollectionPage />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/admin/dashboard' element={<Dashboard />} />
+        <Route path='/admin/manage/:type' element={<ManageData />} />
         <Route path='/order/:orderId' element={<Order />} />
         <Route path='/collections/:userId' element={<ImagesByCreator />} />
       </Routes> 
