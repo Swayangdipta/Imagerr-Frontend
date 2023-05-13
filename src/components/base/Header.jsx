@@ -16,7 +16,7 @@ const Header = ({currentLocation}) => {
             <h1 className='text-[34px] dark:text-zinc-100 text-zinc-900 py-0 mt-[-10px] font-[500] select-none'>Imagerr</h1>
         </section>
         {
-            currentLocation !== "home" && (
+            (currentLocation !== "home" && currentLocation !== "login" && currentLocation !== "register") && (
                 <ToggleTheme />
             )
         }

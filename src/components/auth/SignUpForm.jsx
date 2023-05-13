@@ -221,11 +221,11 @@ const SignUpForm = ({location = "def"}) => {
                     )
                 }
 
-                <span className='text-red-400'>{helpers.validationError}</span>
+                <div className='text-red-400 mt-[40px]'>{helpers.validationError}</div>
 
                 {
                     location === 'def' ? (
-                        <button onClick={handleSubmit} disabled={helpers.isDisabled} type="submit" className='w-[100%] h-[40px] text-[22px] font-[500] text-zinc-100 mx-auto bg-emerald-600 rounded mt-[10px] flex items-center justify-center gap-[15px]'>{helpers.isLoading ? ('Loading....') : (<>Sign In <BiLogIn className='text-[28px]' /></>)}</button>
+                        <button onClick={handleSubmit} disabled={helpers.isDisabled} type="submit" className={`w-[100%] h-[40px] text-[22px] font-[500] text-zinc-100 mx-auto rounded mt-[10px] flex items-center justify-center gap-[15px] ${helpers.isDisabled ? ('bg-emerald-300') : ('bg-emerald-600')} `}>{helpers.isLoading ? ('Loading....') : (<>Sign Up <BiLogIn className='text-[28px]' /></>)}</button>
                     ) : (
                         <button onClick={handleUpdate} type="submit" className='w-[100%] h-[40px] mt-[60px] text-[22px] font-[500] text-zinc-100 mx-auto bg-emerald-600 rounded mt-[10px] flex items-center justify-center gap-[15px]'>{helpers.isLoading ? ('Updating....') : (<>Update <BiLogIn className='text-[28px]' /></>)}</button>
                     )
