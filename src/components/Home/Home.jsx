@@ -18,7 +18,7 @@ const Home = () => {
           <ImageFilters />          
         </div>
         {
-          user?.role === 2 && token && (
+          user?.role >= 2 && token && (
             <div onClick={e=>setIsFormOpen(true)} className='w-[60px] h-[60px] text-zinc-100 text-[38px] cursor-pointer hover:shadow-none bg-emerald-600 shadow-lg fixed bottom-[20px] right-[30px] rounded flex items-center justify-center'>
               <MdAddPhotoAlternate />
             </div>
