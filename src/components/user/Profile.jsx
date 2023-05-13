@@ -5,6 +5,7 @@ import Header from '../base/Header'
 import { getUser } from './helper/userApiCalls'
 import UserDetailsCard from './UserDetailsCard'
 import UserUploads from './UserUploads'
+import { Navigate } from 'react-router-dom'
 
 const Profile = () => {
     const [userInfo,setUserInfo] = useState(undefined)
@@ -27,6 +28,9 @@ const Profile = () => {
     },[])
   return (
     <div>
+        {
+            user.role > 2 && (<Navigate to="/admin/dashboard" />)
+        }
         <Header currentLocation="profile" />
         <UserDetailsCard userId={user._id} />
         {
