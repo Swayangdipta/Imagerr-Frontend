@@ -45,7 +45,7 @@ const Dashboard = () => {
           </div>
           </Link>
 
-          <Link to="admin/manage/products" >
+          <Link to="/admin/manage/products" >
           <div className='cursor-pointer shadow-xl hover:shadow-none w-[160px] h-[80px] rounded-md border border-zinc-400 dark:border-0 bg-emerald-300 dark:bg-emerald-300 flex justify-center items-center'>
             <h1 className='text-[22px] text-center'>
               Manage Product
