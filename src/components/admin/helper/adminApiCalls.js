@@ -28,3 +28,11 @@ export const searchUser = (id,token,query) => {
     }).then(response => response)
     .catch(e => e)
 }
+
+export const addUserByAdmin = (adminId,token,data) => {
+    return axios.post(`${backend}/admin/user/${adminId}`,data,{
+        headers:{
+            "Authorization": `Bearer ${token}`
+        }
+    }).then(response => response).catch(e=>e)
+}

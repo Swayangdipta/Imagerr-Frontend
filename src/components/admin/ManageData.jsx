@@ -6,6 +6,9 @@ import { getAllImages, getAllUsers } from './helper/adminApiCalls'
 import { isAuthenticated } from '../../utils/LS_Helper'
 import { toast } from 'react-toastify'
 import ResultItem from './ResultItem'
+import UploadForm from '../Home/UploadForm'
+import AddUserForm from './AddUserForm'
+import { FaArrowLeft } from 'react-icons/fa'
 
 const ManageData = () => {
     const [results,setResults] = useState([])
@@ -97,6 +100,16 @@ const ManageData = () => {
       </div>
       {
         isSearchOpen && (<Search type={type} setIsSearchOpen={setIsSearchOpen} />)
+      }
+      {
+        isAddOpen && type === "users" ? (<div className='w-screen h-screen fixed top-0 left-0 z-[1000] bg-[#eee] dark:bg-[#222]'>
+          <div onClick={e=>setIsAddOpen(false)} className='rounded-md z-[1000000] fixed top-[30px] left-[5%] p-[10px] bg-zinc-400 dark:bg-black flex items-center gap-[10px] text-zinc-900 dark:text-zinc-100 cursor-pointer shadow-lg hover:shadow-none'>
+            <FaArrowLeft />
+            <h1>Go back</h1>
+          </div>
+          <AddUserForm location='profile' type="add" userData={null} />
+        </div>) 
+        : isAddOpen && type === "products" && (<UploadForm setIsFormOpen={setIsAddOpen} />)
       }
     </div>
   )
