@@ -7,7 +7,7 @@ import {isAuthenticated} from '../../utils/LS_Helper'
 import { toast } from 'react-toastify'
 import { getCategories, uploadImage } from '../Image/helper/imageApiCalls'
 
-const UploadForm = ({setIsFormOpen = f => f}) => {
+const UploadForm = ({setIsFormOpen = f => f,type="def",data}) => {
   const [inputs,setInputs] = useState({
     title: '',
     price: 0,
@@ -86,6 +86,12 @@ const UploadForm = ({setIsFormOpen = f => f}) => {
       setIsDisabled(false)
     }
   },[inputs])
+
+  useEffect(()=>{
+    if(type === "update"){
+      setInputs({...inputs,title:data.title,tags:data.tags[0],price: data.price})
+    }
+  },[])
 
   useEffect(()=>{
     getCategories().then(response => {

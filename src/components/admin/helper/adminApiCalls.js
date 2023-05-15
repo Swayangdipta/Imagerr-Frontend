@@ -36,3 +36,27 @@ export const addUserByAdmin = (adminId,token,data) => {
         }
     }).then(response => response).catch(e=>e)
 }
+
+export const updateUserByAdmin = (userId,adminId,token,data) => {
+    return axios.put(`${backend}/admin/user/${userId}/${adminId}`,data,{
+        headers:{
+            "Authorization": `Bearer ${token}`
+        }
+    }).then(response => response).catch(e=>e)
+}
+
+export const deleteUserByAdmin = (userId,adminId,token) => {
+    return axios.delete(`${backend}/admin/user/${userId}/${adminId}`,{
+        headers:{
+            "Authorization": `Bearer ${token}`
+        }
+    }).then(response => response).catch(e=>e)
+}
+
+export const deleteProductByAdmin = (productId,userId,adminId,token) => {
+    return axios.delete(`${backend}/admin/product/${productId}/${userId}/${adminId}`,{
+        headers:{
+            "Authorization": `Bearer ${token}`
+        }
+    }).then(response => response).catch(e=>e)
+}

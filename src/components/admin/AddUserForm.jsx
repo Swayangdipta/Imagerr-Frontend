@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { authenticate, isAuthenticated } from '../../utils/LS_Helper'
 import {signUp, updateUser} from '../auth/helper/authApiCalls'
-import { addUserByAdmin } from './helper/adminApiCalls'
+import { addUserByAdmin, updateUserByAdmin } from './helper/adminApiCalls'
 
 const AddUserForm = ({location = "def",type,userData}) => {
     const [inputs,setInputs] = useState({
@@ -89,8 +89,7 @@ const AddUserForm = ({location = "def",type,userData}) => {
             formData.set("role",5)
         }
 
-        updateUser(formData,user._id,token).then(response => {
-            console.log(response);
+        updateUserByAdmin(userData._id,user._id,token,formData).then(response => {
             if(response?.response?.data?.error){
                 setHelpers({...helpers,validationError: '',isLoading: false,isDisabled: false})
                 return toast.error(response?.response?.data?.error,{theme: 'colored'})
@@ -150,10 +149,10 @@ const AddUserForm = ({location = "def",type,userData}) => {
 
     useEffect(()=>{
         if (type === "update") {
-            setInputs({...inputs,name: userData.name,email: userData.email,role: userData.role})
             formData.set("name",userData.name)      
             formData.set("email",userData.email)      
             setPreviewUrl(`${process.env.REACT_APP_BACKEND}/user/image/${userData._id}`)
+            setInputs({...inputs,name: userData.name,email: userData.email,role: userData.role})
         }
     },[])
 
